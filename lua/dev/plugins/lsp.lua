@@ -14,7 +14,7 @@ return{
                 "mason-org/mason-lspconfig.nvim",
                 dependencies = {"mason-org/mason.nvim"},
                 opts = {
-                    ensure_installed = {"lua_ls","hls","clangd","pyright"},
+                    ensure_installed = {"lua_ls","hls","clangd","pyright","jdtls", "arduino_language_server"},
                 }
             },
             "onsails/lspkind.nvim",
@@ -35,7 +35,7 @@ return{
             local capabilities = cmp_lsp.default_capabilities()
 
             -- Lista de lsp's que configurar con default_capabilities
-            local lsp_servers = {'lua_ls', 'hyprls', 'haskell', 'pyright', 'clangd', }
+            local lsp_servers = {'lua_ls', 'hyprls', 'haskell', 'pyright', 'clangd', 'arduino_language_server'}
 
             for _, server in ipairs(lsp_servers) do
                 vim.lsp.config(server, { capabilities = capabilities })
