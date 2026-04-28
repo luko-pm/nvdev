@@ -94,13 +94,8 @@ return {
                     { name = 'luasnip' },
                     { name = 'nvim_lsp' },
                     { name = 'path' },
-                    {
-                        name = function()
-                            if vim.g.obsidianMode == nil then
-                                return 'buffer'
-                            end
-                        end
-                    },
+                    { name = 'buffer' },
+                    { name = 'lazydev', group_index = 0 }
                 })
 
             })
