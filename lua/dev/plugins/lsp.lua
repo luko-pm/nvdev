@@ -15,6 +15,7 @@ return{
                 dependencies = {"mason-org/mason.nvim"},
                 opts = {
                     ensure_installed = {"lua_ls","hls","clangd","pyright","jdtls", "arduino_language_server"},
+                    automatic_enable = { exclude = {'jdtls'}}
                 }
             },
             "onsails/lspkind.nvim",
@@ -34,30 +35,16 @@ return{
             local cmp_lsp = require('cmp_nvim_lsp')
             local capabilities = cmp_lsp.default_capabilities()
 
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition , {desc = "lsp go to definition"})
+
             -- Lista de lsp's que configurar con default_capabilities
-            local lsp_servers = {'lua_ls', 'hyprls', 'haskell', 'pyright', 'clangd', 'arduino_language_server'}
+            local lsp_servers = {'lua_ls', 'hyprls', 'haskell', 'pyright', 'clangd', 'arduino_language_server', 'jdtls'}
 
             for _, server in ipairs(lsp_servers) do
                 vim.lsp.config(server, { capabilities = capabilities })
                 vim.lsp.enable(server)
             end
 
-            --[[
-            vim.lsp.config('lua_ls', { capabilities = capabilities })
-            vim.lsp.enable('lua_ls')
-
-            vim.lsp.config('hyprls', { capabilities = capabilities })
-            vim.lsp.enable('hyprls')
-
-            vim.lsp.config('haskell', { capabilities = capabilities })
-            vim.lsp.enable('haskell')
-
-            vim.lsp.config('pyright', { capabilities = capabilities })
-            vim.lsp.enable('pyright')
-
-            vim.lsp.config('clangd', { capabilities = capabilities })
-            vim.lsp.enable('clangd')
-            ]]--
 
         end
     },
